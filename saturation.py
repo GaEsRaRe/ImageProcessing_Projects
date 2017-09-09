@@ -10,16 +10,13 @@ import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 import random as rd
-
+from numpy.linalg import inv
 
 matrix = [[0.299, 0.587, 0.111],
           [0.596,-0.274,-0.322],
           [0.211,-0.523, 0.321]]
 
-matrix2 = [[1, 0.956, 0.621],
-           [1,-0.272,-0.647],
-           [1,-1.106, 1.703]]
-
+matrix2 = inv(matrix)
 def cargar(link): #Load picture
     img  = cv2.imread(link)
     img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
@@ -29,19 +26,19 @@ def convert(base,option): #option1  RGB 2 YIQ and option2 YIQ to RGB
     image = np.copy(base)
     sizex = np.size(image,0) 
     sizey = np.size(image,1)
-    if (option == 1):
-        for i in range(0,sizex):
-            for j in range(sizey):
-                temp = [image[i][j][0],image[i][j][1],image[i][j][2]]
-                new = np.dot(matrix,temp)
-                #print(new)
-                image[i][j] = new
-    if (option == 2):
-        for i in range(0,sizex):
-            for j in range(sizey):
-                temp = [image[i][j][0],image[i][j][1],image[i][j][2]]
-                new = np.dot(matrix2,temp)
-                image[i][j] = float(new)
+    #if (option == 1):
+    for i in range(0,sizex):
+        for j in range(sizey):
+            temp = [image[i][j][0],image[i][j][1],image[i][j][2]]
+            new = np.dot(matrix,temp)
+            #print(new)
+            image[i][j] = new
+    #if (option == 2):
+    for i in range(0,sizex):
+        for j in range(sizey):
+            temp = [image[i][j][0],image[i][j][1],image[i][j][2]]
+            new = np.dot(matrix2,temp)
+            image[i][j] = new
         
    
     #img []
