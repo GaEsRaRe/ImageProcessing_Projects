@@ -46,12 +46,7 @@ def convulution(mat,x,y):
             ans = ans + (border[n+1][m+1]*mat[x+n][y+m])
     return min(255,max(0,ans))
 
-def test(mat,x,y):
-    ans = 0
-    for n in range(-1,2):
-        for m in range(-1,2):
-            print(n,m)
-        pass
+
 def question1(image):
     img = np.copy(image)
     sx,sy = np.size(img,0),np.size(img,1)
@@ -59,10 +54,11 @@ def question1(image):
         for m in range(1,sy-1):
             img[n][m] = convulution(image,n,m)
     
-    
     return img
 
-
+#Pregunta 2:
+    
+    
 def binary(image):
     img = np.copy(image)
     sx,sy = np.size(img,0),np.size(img,1)
@@ -73,13 +69,6 @@ def binary(image):
             else:
                 img[n][m] = 0
     return img
-
-def get_point(img,x,y):
-    ans = []
-    finished = False
-    sx,sy = np.size(img,0),np.size(img,1)
-            
-    return ans
 
 def recorrer(mat,x,y,ar):
     go = False
@@ -121,8 +110,17 @@ def recorrer2(image):
                 cubs.append(get_pos(ar))
     return cubs
 
+def pintar(img,ar):
+    for i in range(ar[1],ar[3]):
+        img[ar[0]][i] = 10
+        img[ar[2]][i] = 10
+    for i in range(ar[0],ar[2]):
+        img[i][ar[1]] = 10
+        img[i][ar[3]] = 10
+    return img
+
 def testing():
-    text = cargar("text.jpg")
+    text = cargar("text2.jpg")
     btext = gray(text)
     btext = binary(btext)
     lala = recorrer2(btext)
@@ -132,11 +130,3 @@ def testing():
     show(btext)
     return btext
 
-def pintar(img,ar):
-    for i in range(ar[1],ar[3]):
-        img[ar[0]][i] = 10
-        img[ar[2]][i] = 10
-    for i in range(ar[0],ar[2]):
-        img[i][ar[1]] = 10
-        img[i][ar[3]] = 10
-    return img
