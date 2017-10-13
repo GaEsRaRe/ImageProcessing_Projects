@@ -1,0 +1,1 @@
+Actividad en clase:Codigo generado en PythonAutor: Gabriel Ramirez ReateguiCodigo: 201516512Como usarlo:Correr el c—digo, compartiendo la ubicaci—n con el archivo doggy.png, recomendado correrlo en spyder. Para ver la demostraci—n completa correr la funci—n demo()Para mas funcionalidad, leer el documento adjunto.
