@@ -113,8 +113,8 @@ def recorrer2(image):
     sx,sy = np.size(img,0),np.size(img,1)
     cubs = []
     ar = []
-    for n in range(0,sx):
-        for m in range(0,sy):
+    for m in range(0,sx):
+        for n in range(0,sy):
             ar = []
             if img[m][n] == 0:
                 recorrer(img,m,n,ar)
@@ -130,7 +130,7 @@ def testing():
         pintar(btext,lala[i])
     btext = back_gray(btext)
     show(btext)
-    return lala
+    return btext
 
 def pintar(img,ar):
     for i in range(ar[1],ar[3]):
