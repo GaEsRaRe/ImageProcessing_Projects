@@ -6,7 +6,6 @@ Created on Sat Oct 14 16:08:23 2017
 """
 
 import numpy as np
-import random as rd
 import cv2
 import time
 from matplotlib import pyplot as plt
@@ -70,12 +69,12 @@ def show(temp): #Used to show the picture
     plt.show()
     return
 
-def to_grey(image):
+def to_gray(image):
     img = np.copy(image)
     img = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
     return img
 
-def back_grey(image):
+def back_gray(image):
     img = np.copy(image)
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)
     return img
@@ -109,11 +108,17 @@ def point_process(image):
     print(int(ftime))
     return img
     
+
+
+
 def demo():
-    trial = cargar("test.jpg")
-    ktrial = to_grey(trial)
+    stime = time.time()
+    trial = cargar("demo3.jpg")
+    ktrial = to_gray(trial)
     nasd = point_process(ktrial)
-    final = back_grey(nasd)
+    final = back_gray(nasd)
     show(final)
-    cv2.imwrite("result.jpg",final)
+    cv2.imwrite("resultado3.jpg",final)
+    ftime = time.time() - stime
+    print("El tiempo de ejecucion es:",round(ftime,3),"segundos") #Muestro el tiempo que tomo el proceso
     pass
